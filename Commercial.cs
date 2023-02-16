@@ -9,16 +9,27 @@ namespace TP3
         private string nom;
         private string prenom;
         private int anneeNaissance;
+        private Catégorie catcom;
+        private Service service;
 
         public string Nom { get => nom; set => nom = value; }
         public string Prenom { get => prenom; set => prenom = value; }
         public int AnneeNaissance { get => anneeNaissance; set => anneeNaissance = value; }
+        internal Catégorie Catcom { get => catcom; set => catcom = value; }
+        internal Service Service { get => service; set => service = value; }
 
-        public Commercial(string nom, string prenom, int anneeNaissance)
-        {   this.nom = nom;
-            this.prenom = prenom;
-            this.anneeNaissance = anneeNaissance; 
-        }        
+        public Commercial(string nom, string prenom, int anneeNaissance, Catégorie catcom, Service service)
+        {   this.Nom = nom;
+            this.Prenom = prenom;
+            this.AnneeNaissance = anneeNaissance;
+            this.Catcom = catcom;
+            this.Service = service;
+            this.Service.AjouterCom(this);
+        }
+        public Commercial()
+        {
+                
+        }
         public int calculAge()
         {
             int diff = DateTime.Now.Year - anneeNaissance;
@@ -27,21 +38,22 @@ namespace TP3
 
         public override string ToString()
         {
-            return "nom : " + this.nom + "\nprenom : " + this.prenom + "\nAnnée de naissance : " + this.anneeNaissance;
+            return "\nnom : " + this.nom + "\nprenom : " + this.prenom + "\nAnnée de naissance : " + this.anneeNaissance + catcom.ToString();
 
         }
 
-        public void Compare(Commercial c)
+        public string Compare(Commercial c)
         {
             string message;
             if (this.Nom == c.Nom)
             {
-                message = "Les deux commerciaux ont le même nom de famille";
+                message = "\nLes deux commerciaux ont le même nom de famille";
             }
             else
             {
-                message = "Les deux commerciaux n'ont pas le même nom de famille";
+                message = "\nLes deux commerciaux n'ont pas le même nom de famille";
             }
+            return message;
 
 
         }

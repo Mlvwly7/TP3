@@ -19,7 +19,7 @@ namespace TP3
         }
         public override string ToString()
         {
-            return "code : " + this.codeCategorie + "\nlibellé : " + this.libCategorie;
+            return "\ncode : " + this.codeCategorie + "\nlibellé : " + this.libCategorie;
 
         }
 
